@@ -1,5 +1,5 @@
 # My Nvim Config
-![dash image]("readme_files/nvim-dash.png")
+![dash image](readme_files/nvim-dash.png)
 # Features
 *   File Tree
 *   Snippets
