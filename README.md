@@ -1,5 +1,5 @@
 # My Nvim Config
-![dash image]("readme_files/dash-.png")
+![dash image]("readme_files/dash-board.png")
 # Features
 *   File Tree
 *   Snippets
