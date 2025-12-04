@@ -1,5 +1,5 @@
 vim.cmd("set expandtab")
-
+vim.cmd("set number")
 vim.cmd("set tabstop=3")
 
 vim.cmd("set softtabstop=3")
