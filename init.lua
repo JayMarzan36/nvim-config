@@ -15,10 +15,10 @@ vim.keymap.set('n', '<leader>swv', ':vsplit<CR>')
 -- Close Current Window
 vim.keymap.set('n', '<leader>cw', ':close<CR>')
 -- ########################################## Move Cursor
-vim.keymap.set('n' , '<leader>gr', ':wincmd l<CR>')
-vim.keymap.set('n', '<leader>gl', ':wincmd w<CR>')
-vim.keymap.set('n', '<leader>gu', ':wincmd j<CR>')
-vim.keymap.set('n', '<leader>gd', ':wincmd k<CR>')
+vim.keymap.set('n' , '<leader>mr', ':wincmd l<CR>')
+vim.keymap.set('n', '<leader>ml', ':wincmd w<CR>')
+vim.keymap.set('n', '<leader>mu', ':wincmd j<CR>')
+vim.keymap.set('n', '<leader>md', ':wincmd k<CR>')
 -- ########################################## 
 
 
