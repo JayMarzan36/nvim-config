@@ -1,4 +1,4 @@
-#Nvim Config
+# Nvim Config
 ![dash image](readme_files/nvim-dash-1.png)
 # Features
 *   File Tree
