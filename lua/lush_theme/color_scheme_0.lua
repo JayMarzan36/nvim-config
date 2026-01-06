@@ -1,18 +1,23 @@
 local lush = require("lush")
 local hsl = lush.hsl
 
--- Base colors (cool, dark, futuristic)
-local bg        = hsl(220, 25, 6)    -- deep blue-black
-local bg_alt    = hsl(220, 25, 9)
-local fg        = hsl(210, 20, 88)   -- soft HUD white
-local fg_dim    = hsl(210, 15, 60)
 
--- Accents
-local visr_green = hsl(95, 65, 55)   -- Halo VISR green
-local hud_blue   = hsl(210, 40, 55)  -- steel blue
-local hud_cyan   = hsl(195, 45, 60)
-local warning    = hsl(25, 70, 55)   -- amber
-local danger     = hsl(0, 60, 55)
+-- colors
+local yellow = hsl(61,100,54)
+local blue = hsl(187,100,40)
+local red = hsl(0,72,56)
+local white = hsl(270, 100, 100)
+local dark_blue = hsl(213, 100, 40)
+
+
+
+-- Base colors (cool, dark, futuristic)
+local bg        = blue
+local bg_alt    = hsl(187,100,40)
+local fg        = yellow
+local fg_dim    = hsl(61,100,40)
+
+
 
 return lush(function()
   return {
@@ -21,65 +26,65 @@ return lush(function()
     ------------------------------------------------------------------
     Normal       { fg = fg, bg = bg },
     NormalFloat  { fg = fg, bg = bg_alt },
-    FloatBorder  { fg = hud_blue, bg = bg_alt },
+    FloatBorder  { fg = blue, bg = bg_alt },
 
     Cursor       { fg = bg, bg = fg },
     CursorLine   { bg = bg_alt },
-    Visual       { bg = hud_blue.darken(35) },
+    Visual       { bg = dark_blue },
 
     ------------------------------------------------------------------
     -- UI
     ------------------------------------------------------------------
     LineNr       { fg = fg_dim },
-    CursorLineNr { fg = visr_green },
+    CursorLineNr { fg = white },
 
-    StatusLine   { fg = fg, bg = bg_alt },
+    StatusLine   { fg = fg, bg = dark_blue },
     StatusLineNC { fg = fg_dim, bg = bg },
 
-    VertSplit    { fg = hud_blue.darken(30) },
-    WinSeparator { fg = hud_blue.darken(30) },
+    VertSplit    { fg = dark_blue },
+    WinSeparator { fg = dark_blue },
 
-    Pmenu        { fg = fg, bg = bg_alt },
-    PmenuSel     { fg = bg, bg = visr_green },
+    Pmenu        { fg = fg, bg = dark_blue },
+    PmenuSel     { fg = bg, bg = dark_blue },
     PmenuSbar    { bg = bg_alt },
-    PmenuThumb   { bg = hud_blue },
+    PmenuThumb   { bg = blue },
 
     ------------------------------------------------------------------
     -- Syntax
     ------------------------------------------------------------------
     Comment      { fg = fg_dim, gui = "italic" },
 
-    String       { fg = visr_green },
-    Number       { fg = warning },
-    Boolean      { fg = warning },
+    String       { fg = dark_blue },
+    Number       { fg = red },
+    Boolean      { fg = red },
 
     Identifier   { fg = fg },
-    Function     { fg = hud_blue },
+    Function     { fg = dark_blue },
 
-    Keyword      { fg = hud_cyan },
-    Operator     { fg = hud_cyan },
+    Keyword      { fg = yellow },
+    Operator     { fg = yellow },
 
-    Type         { fg = hud_blue.lighten(10) },
+    Type         { fg = red },
 
     ------------------------------------------------------------------
-    -- Diagnostics (subtle, HUD-like)
+    -- Diagnostics
     ------------------------------------------------------------------
-    DiagnosticError { fg = danger },
-    DiagnosticWarn  { fg = warning },
-    DiagnosticInfo  { fg = hud_cyan },
-    DiagnosticHint  { fg = visr_green.darken(10) },
+    DiagnosticError { fg = red },
+    DiagnosticWarn  { fg = red },
+    DiagnosticInfo  { fg = red },
+    DiagnosticHint  { fg = red },
 
     ------------------------------------------------------------------
     -- Search / highlights
     ------------------------------------------------------------------
-    Search     { fg = bg, bg = hud_cyan },
-    IncSearch  { fg = bg, bg = visr_green },
+    Search     { fg = bg, bg = yellow },
+    IncSearch  { fg = bg, bg = yellow },
 
     ------------------------------------------------------------------
     -- Git
     ------------------------------------------------------------------
-    DiffAdd    { fg = visr_green },
-    DiffChange { fg = warning },
-    DiffDelete { fg = danger },
+    DiffAdd    { fg = yellow },
+    DiffChange { fg = red },
+    DiffDelete { fg = red },
   }
 end)
