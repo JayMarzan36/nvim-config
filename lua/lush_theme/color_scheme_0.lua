@@ -8,14 +8,8 @@ local blue = hsl(187,100,40)
 local red = hsl(6,100,60)
 local white = hsl(270, 100, 100)
 local dark_blue = hsl(213, 100, 40)
-
-
-
--- Base colors (cool, dark, futuristic)
 local bg        = dark_blue
-local bg_alt    = hsl(187,100,40)
 local fg        = blue
-local fg_dim    = hsl(61,100,40)
 
 
 
@@ -41,8 +35,8 @@ return lush(function()
     StatusLine   { fg = fg, bg = dark_blue },
     StatusLineNC { fg = fg, bg = bg },
 
-    VertSplit    { fg = dark_blue },
-    WinSeparator { fg = dark_blue },
+    VertSplit    { fg = yellow },
+    WinSeparator { fg = yellow },
 
     Pmenu        { fg = fg, bg = dark_blue },
     PmenuSel     { fg = bg, bg = dark_blue },
