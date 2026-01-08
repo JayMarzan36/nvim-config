@@ -40,4 +40,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- Load colorscheme after plugins are loaded
-vim.cmd("colorscheme color_scheme_0")
+vim.cmd("colorscheme color_scheme")
