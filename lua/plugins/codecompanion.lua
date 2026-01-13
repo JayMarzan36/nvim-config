@@ -9,7 +9,7 @@ return {
 			interactions = {
 				chat = {
 					adapter = "ollama",
-					model = "opencoder:8b",
+					model = "qwen3:8b",
 				},
 			},
 			adapters = {

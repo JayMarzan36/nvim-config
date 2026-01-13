@@ -5,7 +5,7 @@ local L0_base = hsl(45, 22, 93)
 local L1_surface = hsl(210, 65, 45)
 local L2_support = hsl(220, 45, 28)
 local L3_accent = hsl(45, 90, 55)
-local L4_energy = hsl(330, 90, 47)
+local L4_energy = hsl(349, 93, 54)
 
 local bg = L0_base
 local fg = L2_support
