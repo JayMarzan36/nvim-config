@@ -1,226 +1,253 @@
-local lush = require("lush")
-local hsl = lush.hsl
+-- Custom color scheme without Lush dependency
+-- Base colors in hex (converted from HSL)
+local L0_base = "#eae6e1"      -- hsl(45, 22, 93) - light cream
+local L1_surface = "#4a7ba7"   -- hsl(210, 65, 45) - muted blue
+local L2_support = "#1a2838"   -- hsl(220, 45, 28) - dark blue-gray
+local L3_accent = "#e6c548"    -- hsl(45, 90, 55) - golden yellow
+local L4_energy = "#d73a49"    -- hsl(349, 93, 54) - energetic red
 
-local L0_base = hsl(45, 22, 93)
-local L1_surface = hsl(210, 65, 45)
-local L2_support = hsl(220, 45, 28)
-local L3_accent = hsl(45, 90, 55)
-local L4_energy = hsl(349, 93, 54)
+-- Derived colors with approximate adjustments
+local L0_base_dark3 = "#d4cfc4"  -- slightly darker base
+local L0_base_dark5 = "#cac2b7"  -- more darkened base
+
+local L1_surface_light10 = "#5a8bb7"  -- lightened surface
+local L1_surface_light15 = "#6a9bc7"  -- more lightened surface
+local L1_surface_light20 = "#7aabce"  -- even more lightened
+
+local L2_support_light5 = "#242d3a"   -- slightly lighter support
+local L2_support_light10 = "#2e3847"  -- more lightened
+local L2_support_light15 = "#384452"  -- further lightened
+local L2_support_light18 = "#3e4a5a"  -- 18% lighter
+local L2_support_light20 = "#424d5f"  -- 20% lighter
+local L2_support_light25 = "#4c5868"  -- 25% lighter
+local L2_support_light30 = "#565f71"  -- 30% lighter
+local L2_support_light35 = "#60687a"  -- 35% lighter
+
+local L3_accent_dark5 = "#d9b83a"     -- slightly darker accent
+local L3_accent_light5 = "#f0d456"    -- slightly lighter
+local L3_accent_light10 = "#f5dc66"   -- more lightened
+local L3_accent_light15 = "#f9e277"   -- further lightened
+local L3_accent_light20 = "#fde988"   -- 20% lighter
+local L3_accent_light25 = "#fff099"   -- 25% lighter
+local L3_accent_light30 = "#fff7aa"   -- 30% lighter
+
+local L4_energy_light5 = "#e04e5b"    -- slightly lighter
+local L4_energy_light15 = "#ed7680"   -- more lightened
+local L4_energy_light20 = "#f18a94"   -- 20% lighter
+local L4_energy_light30 = "#f9adb8"   -- 30% lighter
 
 local bg = L0_base
 local fg = L2_support
 
-return lush(function()
-  return {
-    ------------------------------------------------------------------
-    -- Core / UI
-    ------------------------------------------------------------------
-    Normal         { fg = fg, bg = bg },
-    NormalFloat    { fg = fg, bg = bg },
-    FloatBorder    { fg = bg, bg = bg },
-    Cursor         { fg = bg, bg = L1_surface },
-    CursorIM       { fg = bg, bg = L1_surface },
-    CursorColumn   { bg = bg.da(3) },
-    CursorLine     { bg = bg.da(3) },
-    ColorColumn    { bg = bg.da(5) },
-    Conceal        { fg = L2_support.li(30) },
-    CurSearch      { bg = L3_accent.li(20) },
-    lCursor        { fg = bg, bg = L1_surface },
-    Directory      { fg = L3_accent },
-    DiffAdd        { fg = L3_accent },
-    DiffChange     { fg = L1_surface },
-    DiffDelete     { fg = L4_energy },
-    DiffText       { bg = L3_accent.li(20) },
-    EndOfBuffer    { fg = L2_support.li(25) },
-    TermCursor     { fg = bg, bg = L1_surface },
-    TermCursorNC   { fg = fg, bg = bg },
-    ErrorMsg       { fg = L4_energy, gui = "bold" },
-    VertSplit      { fg = L2_support.li(10) },
-    Folded         { fg = L2_support.li(20), bg = bg.da(5) },
-    FoldColumn     { fg = L2_support.li(10) },
-    SignColumn     { fg = L2_support.li(15) },
-    IncSearch      { fg = bg, bg = L3_accent },
-    Substitute     { bg = L3_accent.li(30) },
-    LineNr         { fg = L2_support.li(18) },
-    LineNrAbove    { fg = L2_support.li(15) },
-    LineNrBelow    { fg = L2_support.li(15) },
-    CursorLineNr   { fg = L3_accent, gui = "bold" },
-    CursorLineFold { fg = L2_support.li(10) },
-    CursorLineSign { fg = L2_support.li(10) },
-    MatchParen     { fg = bg, bg = L4_energy.li(20), gui = "bold" },
-    ModeMsg        { fg = L3_accent, gui = "bold" },
-    MsgArea        { fg = fg, bg = bg },
-    MsgSeparator   { fg = L2_support.li(15) },
-    MoreMsg        { fg = L3_accent },
-    NonText        { fg = L2_support.li(20) },
-    NormalNC       { fg = fg, bg = bg },
-    Pmenu          { fg = bg.da(15), bg = L1_surface.li(10) },
-    PmenuSel       { fg = bg, bg = L3_accent },
-    PmenuKind      { fg = L2_support },
-    PmenuKindSel   { fg = L0_base, bg = L3_accent },
-    PmenuExtra     { fg = L2_support.li(10) },
-    PmenuExtraSel  { fg = L0_base, bg = L3_accent.li(10) },
-    PmenuSbar      { bg = bg.da(5) },
-    PmenuThumb     { bg = L1_surface },
-    Question       { fg = L3_accent },
-    QuickFixLine   { bg = L0_base.da(5), fg = L3_accent },
-    Search         { fg = bg, bg = L4_energy },
-    SpecialKey     { fg = L2_support.li(30) },
-    SpellBad       { sp = L4_energy, gui = "undercurl" },
-    SpellCap       { sp = L3_accent, gui = "undercurl" },
-    SpellLocal     { sp = L2_support.li(25), gui = "undercurl" },
-    SpellRare      { sp = L1_surface, gui = "undercurl" },
-    StatusLine     { fg = bg.da(20), bg = L1_surface },
-    StatusLineNC   { fg = L2_support, bg = bg },
-    TabLine        { fg = L2_support, bg = bg },
-    TabLineFill    { fg = fg, bg = bg.da(5) },
-    TabLineSel     { fg = bg, bg = L3_accent },
-    Title          { fg = L3_accent, gui = "bold" },
-    Visual         { bg = L3_accent.li(25) },
-    VisualNOS      { bg = L3_accent.li(15) },
-    WarningMsg     { fg = L3_accent, gui = "bold" },
-    Whitespace     { fg = L2_support.li(20) },
-    Winseparator   { fg = L2_support.li(10) },
-    WildMenu       { fg = bg, bg = L3_accent },
-    WinBar         { fg = fg, bg = bg },
-    WinBarNC       { fg = L2_support.li(15), bg = bg },
+local function set_hl(name, opts)
+  vim.api.nvim_set_hl(0, name, opts)
+end
 
-    ------------------------------------------------------------------
-    -- Syntax
-    ------------------------------------------------------------------
-    Comment        { fg = L2_support.li(35), gui = "italic" },
-    Constant       { fg = L1_surface.li(15) },
-    String         { fg = L1_surface.li(15) },
-    Character      { fg = L1_surface.li(15) },
-    Number         { fg = L1_surface.li(15) },
-    Boolean        { fg = L1_surface.li(15) },
-    Float          { fg = L1_surface.li(15) },
-    Identifier     { fg = L2_support.da(10) },
-    Function       { fg = L3_accent },
-    Statement      { fg = L3_accent.da(5) },
-    Conditional    { fg = L3_accent },
-    Repeat         { fg = L3_accent.da(5) },
-    Label          { fg = L4_energy },
-    Operator       { fg = L2_support.li(5) },
-    Keyword        { fg = L3_accent },
-    Exception      { fg = L4_energy },
-    PreProc        { fg = L3_accent },
-    Include        { fg = L3_accent },
-    Define         { fg = L3_accent },
-    Macro          { fg = L3_accent },
-    PreCondit      { fg = L3_accent },
-    Type           { fg = L4_energy.li(5) },
-    StorageClass   { fg = L4_energy },
-    Structure      { fg = L4_energy },
-    Typedef        { fg = L4_energy },
-    Special        { fg = L2_support },
-    SpecialChar    { fg = L2_support },
-    Tag            { fg = L3_accent },
-    Delimiter      { fg = L2_support.li(10) },
-    SpecialComment { fg = L2_support.li(30) },
-    Debug          { fg = L4_energy, gui = "bold" },
-    Underlined     { gui = "underline" },
-    Ignore         { fg = bg },
-    Error          { fg = L4_energy, gui = "bold" },
-    Todo           { fg = L3_accent, gui = "bold" },
+-- Apply highlights
+set_hl("Normal", { fg = fg, bg = bg })
+set_hl("NormalFloat", { fg = fg, bg = bg })
+set_hl("FloatBorder", { fg = bg, bg = bg })
+set_hl("Cursor", { fg = bg, bg = L1_surface })
+set_hl("CursorIM", { fg = bg, bg = L1_surface })
+set_hl("CursorColumn", { bg = L0_base_dark3 })
+set_hl("CursorLine", { bg = L0_base_dark3 })
+set_hl("ColorColumn", { bg = L0_base_dark5 })
+set_hl("Conceal", { fg = L2_support_light30 })
+set_hl("CurSearch", { bg = L3_accent_light20 })
+set_hl("lCursor", { fg = bg, bg = L1_surface })
+set_hl("Directory", { fg = L3_accent })
+set_hl("DiffAdd", { fg = L3_accent })
+set_hl("DiffChange", { fg = L1_surface })
+set_hl("DiffDelete", { fg = L4_energy })
+set_hl("DiffText", { bg = L3_accent_light20 })
+set_hl("EndOfBuffer", { fg = L2_support_light25 })
+set_hl("TermCursor", { fg = bg, bg = L1_surface })
+set_hl("TermCursorNC", { fg = fg, bg = bg })
+set_hl("ErrorMsg", { fg = L4_energy, bold = true })
+set_hl("VertSplit", { fg = L2_support_light10 })
+set_hl("Folded", { fg = L2_support_light20, bg = L0_base_dark5 })
+set_hl("FoldColumn", { fg = L2_support_light10 })
+set_hl("SignColumn", { fg = L2_support_light15 })
+set_hl("IncSearch", { fg = bg, bg = L3_accent })
+set_hl("Substitute", { bg = L3_accent_light30 })
+set_hl("LineNr", { fg = L2_support_light18 })
+set_hl("LineNrAbove", { fg = L2_support_light15 })
+set_hl("LineNrBelow", { fg = L2_support_light15 })
+set_hl("CursorLineNr", { fg = L3_accent, bold = true })
+set_hl("CursorLineFold", { fg = L2_support_light10 })
+set_hl("CursorLineSign", { fg = L2_support_light10 })
+set_hl("MatchParen", { fg = bg, bg = L4_energy_light20, bold = true })
+set_hl("ModeMsg", { fg = L3_accent, bold = true })
+set_hl("MsgArea", { fg = fg, bg = bg })
+set_hl("MsgSeparator", { fg = L2_support_light15 })
+set_hl("MoreMsg", { fg = L3_accent })
+set_hl("NonText", { fg = L2_support_light20 })
+set_hl("NormalNC", { fg = fg, bg = bg })
+set_hl("Pmenu", { fg = L0_base_dark5, bg = L1_surface_light10 })
+set_hl("PmenuSel", { fg = bg, bg = L3_accent })
+set_hl("PmenuKind", { fg = L2_support })
+set_hl("PmenuKindSel", { fg = L0_base, bg = L3_accent })
+set_hl("PmenuExtra", { fg = L2_support_light10 })
+set_hl("PmenuExtraSel", { fg = L0_base, bg = L3_accent_light10 })
+set_hl("PmenuSbar", { bg = L0_base_dark5 })
+set_hl("PmenuThumb", { bg = L1_surface })
+set_hl("Question", { fg = L3_accent })
+set_hl("QuickFixLine", { bg = L0_base_dark5, fg = L3_accent })
+set_hl("Search", { fg = bg, bg = L4_energy })
+set_hl("SpecialKey", { fg = L2_support_light30 })
+set_hl("SpellBad", { sp = L4_energy, undercurl = true })
+set_hl("SpellCap", { sp = L3_accent, undercurl = true })
+set_hl("SpellLocal", { sp = L2_support_light25, undercurl = true })
+set_hl("SpellRare", { sp = L1_surface, undercurl = true })
+set_hl("StatusLine", { fg = L0_base_dark5, bg = L1_surface })
+set_hl("StatusLineNC", { fg = L2_support, bg = bg })
+set_hl("TabLine", { fg = L2_support, bg = bg })
+set_hl("TabLineFill", { fg = fg, bg = L0_base_dark5 })
+set_hl("TabLineSel", { fg = bg, bg = L3_accent })
+set_hl("Title", { fg = L3_accent, bold = true })
+set_hl("Visual", { bg = L3_accent_light25 })
+set_hl("VisualNOS", { bg = L3_accent_light15 })
+set_hl("WarningMsg", { fg = L3_accent, bold = true })
+set_hl("Whitespace", { fg = L2_support_light20 })
+set_hl("Winseparator", { fg = L2_support_light10 })
+set_hl("WildMenu", { fg = bg, bg = L3_accent })
+set_hl("WinBar", { fg = fg, bg = bg })
+set_hl("WinBarNC", { fg = L2_support_light15, bg = bg })
 
-    ------------------------------------------------------------------
-    -- LSP / Diagnostics
-    ------------------------------------------------------------------
-    LspReferenceText            { bg = L3_accent.li(15) },
-    LspReferenceRead            { bg = L3_accent.li(10) },
-    LspReferenceWrite           { bg = L3_accent.li(5) },
-    LspCodeLens                 { fg = L2_support.li(20) },
-    LspCodeLensSeparator        { fg = L2_support.li(25) },
-    LspSignatureActiveParameter { fg = L3_accent, gui = "bold" },
+------------------------------------------------------------------
+-- Syntax
+------------------------------------------------------------------
+set_hl("Comment", { fg = L2_support_light35, italic = true })
+set_hl("Constant", { fg = L1_surface_light15 })
+set_hl("String", { fg = L1_surface_light15 })
+set_hl("Character", { fg = L1_surface_light15 })
+set_hl("Number", { fg = L1_surface_light15 })
+set_hl("Boolean", { fg = L1_surface_light15 })
+set_hl("Float", { fg = L1_surface_light15 })
+set_hl("Identifier", { fg = L2_support_light5 })
+set_hl("Function", { fg = L3_accent })
+set_hl("Statement", { fg = L3_accent_dark5 })
+set_hl("Conditional", { fg = L3_accent })
+set_hl("Repeat", { fg = L3_accent_dark5 })
+set_hl("Label", { fg = L4_energy })
+set_hl("Operator", { fg = L2_support_light5 })
+set_hl("Keyword", { fg = L3_accent })
+set_hl("Exception", { fg = L4_energy })
+set_hl("PreProc", { fg = L3_accent })
+set_hl("Include", { fg = L3_accent })
+set_hl("Define", { fg = L3_accent })
+set_hl("Macro", { fg = L3_accent })
+set_hl("PreCondit", { fg = L3_accent })
+set_hl("Type", { fg = L4_energy_light5 })
+set_hl("StorageClass", { fg = L4_energy })
+set_hl("Structure", { fg = L4_energy })
+set_hl("Typedef", { fg = L4_energy })
+set_hl("Special", { fg = L2_support })
+set_hl("SpecialChar", { fg = L2_support })
+set_hl("Tag", { fg = L3_accent })
+set_hl("Delimiter", { fg = L2_support_light10 })
+set_hl("SpecialComment", { fg = L2_support_light30 })
+set_hl("Debug", { fg = L4_energy, bold = true })
+set_hl("Underlined", { underline = true })
+set_hl("Ignore", { fg = bg })
+set_hl("Error", { fg = L4_energy, bold = true })
+set_hl("Todo", { fg = L3_accent, bold = true })
 
-    DiagnosticError            { fg = L4_energy },
-    DiagnosticWarn             { fg = L3_accent },
-    DiagnosticInfo             { fg = L1_surface },
-    DiagnosticHint             { fg = L2_support.li(25) },
-    DiagnosticOk               { fg = L3_accent.li(15) },
-    DiagnosticVirtualTextError { fg = L4_energy },
-    DiagnosticVirtualTextWarn  { fg = L3_accent },
-    DiagnosticVirtualTextInfo  { fg = L1_surface },
-    DiagnosticVirtualTextHint  { fg = L2_support.li(25) },
-    DiagnosticVirtualTextOk    { fg = L3_accent.li(15) },
-    DiagnosticUnderlineError   { sp = L4_energy, gui = "undercurl" },
-    DiagnosticUnderlineWarn    { sp = L3_accent, gui = "undercurl" },
-    DiagnosticUnderlineInfo    { sp = L1_surface, gui = "undercurl" },
-    DiagnosticUnderlineHint    { sp = L2_support.li(25), gui = "undercurl" },
-    DiagnosticUnderlineOk      { sp = L3_accent.li(15), gui = "undercurl" },
-    DiagnosticFloatingError    { fg = L4_energy },
-    DiagnosticFloatingWarn     { fg = L3_accent },
-    DiagnosticFloatingInfo     { fg = L1_surface },
-    DiagnosticFloatingHint     { fg = L2_support.li(25) },
-    DiagnosticFloatingOk       { fg = L3_accent.li(15) },
-    DiagnosticSignError        { fg = L4_energy },
-    DiagnosticSignWarn         { fg = L3_accent },
-    DiagnosticSignInfo         { fg = L1_surface },
-    DiagnosticSignHint         { fg = L2_support.li(25) },
-    DiagnosticSignOk           { fg = L3_accent.li(15) },
+------------------------------------------------------------------
+-- LSP / Diagnostics
+------------------------------------------------------------------
+set_hl("LspReferenceText", { bg = L3_accent_light15 })
+set_hl("LspReferenceRead", { bg = L3_accent_light10 })
+set_hl("LspReferenceWrite", { bg = L3_accent_light5 })
+set_hl("LspCodeLens", { fg = L2_support_light20 })
+set_hl("LspCodeLensSeparator", { fg = L2_support_light25 })
+set_hl("LspSignatureActiveParameter", { fg = L3_accent, bold = true })
 
-    ------------------------------------------------------------------
-    -- Tree-Sitter
-    ------------------------------------------------------------------
-    ["@text.literal"]      ={ fg = L2_support.li(25) },
-    ["@text.reference"]    ={ fg = L2_support },
-    ["@text.title"]        ={ fg = L3_accent, gui = "bold" },
-    ["@text.uri"]          ={ fg = L3_accent, gui = "underline" },
-    ["@text.underline"]    ={ fg = L3_accent, gui = "underline" },
-    ["@text.todo"]         ={ fg = L3_accent, gui = "bold" },
-    ["@comment"]           ={ fg = L2_support.li(35), gui = "italic" },
-    ["@punctuation"]       ={ fg = L2_support.li(10) },
-    ["@constant"]          ={ fg = L1_surface.li(15) },
-    ["@constant.builtin"]  ={ fg = L2_support },
-    ["@constant.macro"]    ={ fg = L3_accent },
-    ["@define"]            ={ fg = L3_accent },
-    ["@macro"]             ={ fg = L3_accent },
-    ["@string"]            ={ fg = L1_surface.li(15) },
-    ["@string.escape"]     ={ fg = L2_support },
-    ["@string.special"]    ={ fg = L2_support },
-    ["@character"]         ={ fg = L1_surface.li(15) },
-    ["@character.special"] ={ fg = L2_support },
-    ["@number"]            ={ fg = L1_surface.li(15) },
-    ["@boolean"]           ={ fg = L1_surface.li(15) },
-    ["@float"]             ={ fg = L1_surface.li(15) },
-    ["@function"]          ={ fg = L3_accent },
-    ["@function.builtin"]  ={ fg = L2_support },
-    ["@function.macro"]    ={ fg = L3_accent },
-    ["@parameter"]         ={ fg = L2_support.da(10) },
-    ["@method"]            ={ fg = L3_accent },
-    ["@field"]             ={ fg = L2_support.da(10) },
-    ["@property"]          ={ fg = L2_support.da(10) },
-    ["@constructor"]       ={ fg = L3_accent },
-    ["@conditional"]       ={ fg = L3_accent },
-    ["@repeat"]            ={ fg = L3_accent.da(5) },
-    ["@label"]             ={ fg = L4_energy },
-    ["@operator"]          ={ fg = L2_support.li(5) },
-    ["@keyword"]           ={ fg = L3_accent },
-    ["@exception"]         ={ fg = L4_energy },
-    ["@variable"]          ={ fg = L2_support },
-    ["@type"]              ={ fg = L4_energy.li(5) },
-    ["@type.definition"]   ={ fg = L4_energy },
-    ["@storageclass"]      ={ fg = L4_energy },
-    ["@structure"]         ={ fg = L4_energy },
-    ["@namespace"]         ={ fg = L2_support },
-    ["@include"]           ={ fg = L3_accent },
-    ["@preproc"]           ={ fg = L3_accent },
-    ["@debug"]             ={ fg = L4_energy },
-    ["@tag"]               ={ fg = L3_accent },
+set_hl("DiagnosticError", { fg = L4_energy })
+set_hl("DiagnosticWarn", { fg = L3_accent })
+set_hl("DiagnosticInfo", { fg = L1_surface })
+set_hl("DiagnosticHint", { fg = L2_support_light25 })
+set_hl("DiagnosticOk", { fg = L3_accent_light15 })
+set_hl("DiagnosticVirtualTextError", { fg = L4_energy })
+set_hl("DiagnosticVirtualTextWarn", { fg = L3_accent })
+set_hl("DiagnosticVirtualTextInfo", { fg = L1_surface })
+set_hl("DiagnosticVirtualTextHint", { fg = L2_support_light25 })
+set_hl("DiagnosticVirtualTextOk", { fg = L3_accent_light15 })
+set_hl("DiagnosticUnderlineError", { sp = L4_energy, undercurl = true })
+set_hl("DiagnosticUnderlineWarn", { sp = L3_accent, undercurl = true })
+set_hl("DiagnosticUnderlineInfo", { sp = L1_surface, undercurl = true })
+set_hl("DiagnosticUnderlineHint", { sp = L2_support_light25, undercurl = true })
+set_hl("DiagnosticUnderlineOk", { sp = L3_accent_light15, undercurl = true })
+set_hl("DiagnosticFloatingError", { fg = L4_energy })
+set_hl("DiagnosticFloatingWarn", { fg = L3_accent })
+set_hl("DiagnosticFloatingInfo", { fg = L1_surface })
+set_hl("DiagnosticFloatingHint", { fg = L2_support_light25 })
+set_hl("DiagnosticFloatingOk", { fg = L3_accent_light15 })
+set_hl("DiagnosticSignError", { fg = L4_energy })
+set_hl("DiagnosticSignWarn", { fg = L3_accent })
+set_hl("DiagnosticSignInfo", { fg = L1_surface })
+set_hl("DiagnosticSignHint", { fg = L2_support_light25 })
+set_hl("DiagnosticSignOk", { fg = L3_accent_light15 })
 
-    ------------------------------------------------------------------
-    -- Neo-tree
-    ------------------------------------------------------------------
-    NeoTreeDirectoryName { fg = L2_support },
-    NeoTreeDirectoryIcon { fg = L2_support },
-    NeoTreeOpenedFile     { fg = fg.da(10) },
-    NeoTreeFileName       { fg = fg.da(10) },
-    NeoTreeFileIcon       { fg = L2_support.li(10) },
-    NeoTreeRootName       { fg = L3_accent, gui = "bold" },
-    NeoTreeGitAdded       { fg = L3_accent },
-    NeoTreeGitModified    { fg = L1_surface },
-    NeoTreeGitDeleted     { fg = L4_energy },
-  }
-end)
+------------------------------------------------------------------
+-- Tree-Sitter
+------------------------------------------------------------------
+set_hl("@text.literal", { fg = L2_support_light25 })
+set_hl("@text.reference", { fg = L2_support })
+set_hl("@text.title", { fg = L3_accent, bold = true })
+set_hl("@text.uri", { fg = L3_accent, underline = true })
+set_hl("@text.underline", { fg = L3_accent, underline = true })
+set_hl("@text.todo", { fg = L3_accent, bold = true })
+set_hl("@comment", { fg = L2_support_light35, italic = true })
+set_hl("@punctuation", { fg = L2_support_light10 })
+set_hl("@constant", { fg = L1_surface_light15 })
+set_hl("@constant.builtin", { fg = L2_support })
+set_hl("@constant.macro", { fg = L3_accent })
+set_hl("@define", { fg = L3_accent })
+set_hl("@macro", { fg = L3_accent })
+set_hl("@string", { fg = L1_surface_light15 })
+set_hl("@string.escape", { fg = L2_support })
+set_hl("@string.special", { fg = L2_support })
+set_hl("@character", { fg = L1_surface_light15 })
+set_hl("@character.special", { fg = L2_support })
+set_hl("@number", { fg = L1_surface_light15 })
+set_hl("@boolean", { fg = L1_surface_light15 })
+set_hl("@float", { fg = L1_surface_light15 })
+set_hl("@function", { fg = L3_accent })
+set_hl("@function.builtin", { fg = L2_support })
+set_hl("@function.macro", { fg = L3_accent })
+set_hl("@parameter", { fg = L2_support_light5 })
+set_hl("@method", { fg = L3_accent })
+set_hl("@field", { fg = L2_support_light5 })
+set_hl("@property", { fg = L2_support_light5 })
+set_hl("@constructor", { fg = L3_accent })
+set_hl("@conditional", { fg = L3_accent })
+set_hl("@repeat", { fg = L3_accent_dark5 })
+set_hl("@label", { fg = L4_energy })
+set_hl("@operator", { fg = L2_support_light5 })
+set_hl("@keyword", { fg = L3_accent })
+set_hl("@exception", { fg = L4_energy })
+set_hl("@variable", { fg = L2_support })
+set_hl("@type", { fg = L4_energy_light5 })
+set_hl("@type.definition", { fg = L4_energy })
+set_hl("@storageclass", { fg = L4_energy })
+set_hl("@structure", { fg = L4_energy })
+set_hl("@namespace", { fg = L2_support })
+set_hl("@include", { fg = L3_accent })
+set_hl("@preproc", { fg = L3_accent })
+set_hl("@debug", { fg = L4_energy })
+set_hl("@tag", { fg = L3_accent })
+
+------------------------------------------------------------------
+-- Neo-tree
+------------------------------------------------------------------
+set_hl("NeoTreeDirectoryName", { fg = L2_support })
+set_hl("NeoTreeDirectoryIcon", { fg = L2_support })
+set_hl("NeoTreeOpenedFile", { fg = L2_support_light5 })
+set_hl("NeoTreeFileName", { fg = L2_support_light5 })
+set_hl("NeoTreeFileIcon", { fg = L2_support_light10 })
+set_hl("NeoTreeRootName", { fg = L3_accent, bold = true })
+set_hl("NeoTreeGitAdded", { fg = L3_accent })
+set_hl("NeoTreeGitModified", { fg = L1_surface })
+set_hl("NeoTreeGitDeleted", { fg = L4_energy })
 

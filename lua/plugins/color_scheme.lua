@@ -1,7 +1,3 @@
-return {
-   {
-      "rktjmp/lush.nvim",
-      priority = 1000
-   }
-}
+-- Custom color scheme - Lush plugin no longer needed
+return {}
 

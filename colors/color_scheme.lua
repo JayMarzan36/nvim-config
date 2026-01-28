@@ -1,5 +1,5 @@
-vim.opt.background = 'dark'
+vim.opt.background = 'light'
 vim.g.colors_name = 'color_scheme'
 
-package.loaded['lush_theme.color_scheme'] = nil
-require('lush')(require('lush_theme.color_scheme'))
+-- Load the custom color scheme (no longer using Lush)
+require('lush_theme.color_scheme')
